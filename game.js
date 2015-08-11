@@ -1,14 +1,14 @@
 var lastFrameTimeMs = 0,
-maxFPS = 120,
-delta = 0,
-timestep = 1000 / 60,
-fps = 120,
-framesThisSecond = 0,
-lastFpsUpdate = 0,
-ctx = null;
+var maxFPS = 120;
+var delta = 0;
+var timestep = 1000 / 60;
+var fps = 120;
+var framesThisSecond = 0;
+var lastFpsUpdate = 0;
+var ctx = null;
 var player;
-WIDTH = 800,
-HEIGHT = 600;
+var WIDTH = 800,
+var HEIGHT = 600;
 function mouseMove(e){
 	var xR = (e.clientX);
 	var yR = (e.clientY);
