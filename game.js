@@ -15,10 +15,6 @@ function mouseMove(e){
 	//console.log(xR+' '+yR);
 }
 function load(){
-
-
-		console.log('ofoofof');
-
 	var elem = document.getElementById('c');
 	if (!elem || !elem.getContext) {return;}
 	ctx = elem.getContext('2d');
@@ -36,7 +32,6 @@ function load(){
 	ctx.canvas.width = WIDTH;
 	ctx.canvas.height = HEIGHT;
 	player = new Player();
-	console.log('coucou');
 	requestAnimationFrame(mainLoop);
 }
 var keyReleased = function keyReleased(e){
