@@ -1,4 +1,4 @@
-var lastFrameTimeMs = 0,
+var lastFrameTimeMs = 0;
 var maxFPS = 120;
 var delta = 0;
 var timestep = 1000 / 60;
@@ -7,7 +7,7 @@ var framesThisSecond = 0;
 var lastFpsUpdate = 0;
 var ctx = null;
 var player;
-var WIDTH = 800,
+var WIDTH = 800;
 var HEIGHT = 600;
 function mouseMove(e){
 	var xR = (e.clientX);
