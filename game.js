@@ -8,9 +8,18 @@ var lastFpsUpdate = 0;
 var ctx = null;
 var player;
 var map;
+var inputManager;
+/**
+*	Constants
+**/
 var WIDTH = 320;
 var HEIGHT = 240;
 var SCALE = 1;
+var W_TILE = 16;
+var H_TILE = 16;
+var TILE_BY_WIDTH = 16;
+var TILE_BY_HEIGHT = 20;
+var TILE = [];
 function mouseMove(e){
 	var xR = (e.clientX);
 	var yR = (e.clientY);
@@ -58,7 +67,7 @@ function load(){
 	ctx.canvas.height = heightW;
 	SCALE = widthW/320;
 	requestAnimationFrame(mainLoop);
-	//map = new Map();
+	map = new Map();
 	player = new Player();
 	//loading image
 	// every image is loaded in images
@@ -73,7 +82,11 @@ function load(){
 			images[img.name] = img;
 		}
 	}
+	//load events
 	addEvent(elem, "mousemove", function (e) { mouseMove(e);});
+	//load keys events
+	inputManager = new Input();
+	//start game
 	currentState++;
 }
 var keyReleased = function keyReleased(e){
@@ -119,7 +132,7 @@ function draw(){
 		ctx.fillStyle = '#232323';
 		ctx.fillText(text, WIDTH/2 - 77, HEIGHT/2 - 10);
 	}else if(currentState == 1){
-		//map.draw(ctx);
+		map.draw(ctx);
 		player.draw(ctx);
 		var rdm = Math.random()*10;
 
