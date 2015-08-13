@@ -29,6 +29,15 @@ var drawPlayer = function draw(ctx){
  * @param float delta the PC's speed
  */
 var updatePlayer = function update(delta){
+    if ( inputManager.up ) {
+        this.y++ ;
+    } else if ( inputManger.down ) {
+        this.y-- ;
+    } else if ( inputManger.left ) {
+        this.x++ ;
+    } else if ( inputManager.right ) {
+        this.x-- ;
+    }
 }
 
 /**
@@ -37,14 +46,4 @@ var updatePlayer = function update(delta){
  * @param integer pressedKey the pressed key
  */
 var movePlayer = function (context, pressedKey, canvasHeight) {
-    //Up arrow or "z"
-    if (pressedKey == 38 || pressedKey == 90) {
-        //Jump
-    } else if (pressedKey == 40 || pressedKey == 83) {
-        //Down
-    } else if (pressedKey == 37 || pressedKey == 81) {
-        ///Left
-    } else if (pressedKey == 39 || pressedKey == 68) {
-        //Right
-    }
 }
