@@ -19,7 +19,6 @@ var W_TILE = 16;
 var H_TILE = 16;
 var TILE_BY_WIDTH = 16;
 var TILE_BY_HEIGHT = 20;
-var TILE = [];
 function mouseMove(e){
 	var xR = (e.clientX);
 	var yR = (e.clientY);
