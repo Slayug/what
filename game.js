@@ -143,6 +143,9 @@ function mainLoop(timestamp) {
             break;
         }
     }
+    //Take inputs
+    //Update player
+    //Update physique( colision , gravity ... )
     draw();
     requestAnimationFrame(mainLoop);
 }
