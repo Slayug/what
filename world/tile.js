@@ -12,14 +12,20 @@ var Tile = function Tile(meta, substitute, functionDraw){
 	this.meta = meta;
 	this.substitute = substitute;
 	this.draw = functionDraw;
+	TILE[this.id] = this;
 }
 var a = function(ctx, x, y){
 	ctx.fillStyle = 'black';
 	ctx.fillRect(x, y, W_TILE, H_TILE);
 }
 var b = function(ctx, x, y){
-	ctx.fillStyle = 'white';
+	ctx.fillStyle = 'red';
 	ctx.fillRect(x, y, W_TILE, H_TILE);
 }
-TILE[idTile] = new Tile(1, 0, a);
-TILE[idTile] = new Tile(0, 0, b);
+var c = function(ctx, x, y){
+	ctx.fillStyle = 'green';
+	ctx.fillRect(x, y, W_TILE, H_TILE);
+}
+new Tile(1, 0, a);
+new Tile(0, 0, b);
+new Tile(0, 0, c);

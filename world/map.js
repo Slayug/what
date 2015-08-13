@@ -1,7 +1,10 @@
 /**
+*	player's position on the right side of canvas
+*
+**/
+var POS_TO_LEFT = 20;
+/**
 *	@arg name
-*	@arg x spawn
-*	@arg y spawn
 *
 **/
 function Map(name){
@@ -17,7 +20,7 @@ function Map(name){
 function loadMap(){
 	var tiles = [];
 	//genere chunks de test
-	for(var x = 256; x > 256-32; x--){
+	for(var x = 256; x > 0; x--){
 		for(var y = 0; y < TILE_BY_HEIGHT; y++){
 			var t = 0;
 			if(y == 2){
@@ -25,6 +28,10 @@ function loadMap(){
 			}
 			if(tiles[x] == undefined){
 				tiles[x] = [];
+			}
+			var rdm = parseInt((Math.random()*3) + 1);
+			if(rdm == 2){
+				t = 2;
 			}
 			tiles[x][y] = t;
 		}
@@ -34,20 +41,23 @@ function loadMap(){
 var updateMap = function(delta){
 }
 /**
-*	one or two chunks to draw
+*	draw the map with the current position of player
 **/
 var drawMap = function(ctx){
 	ctx.fillStyle='black';
-	
-}
-/**
-*	Represents 16 width of tile
-*
-**/
-var Chunk = function (_x, _y){
-	this.tiles = [];
-	this.x = _x;
-	this.y = _y;
+	var startX = 0;
+	var startY = 0;
+	var indexTileX = parseInt(cut((player.x - (WIDTH-POS_TO_LEFT)/W_TILE)));
+	var xCanvas = 0;
+	var yCanvas = 0;
+	for(var yT = 0; yT < TILE_BY_HEIGHT; yT++){
+		for(var xT = indexTileX; xT < TILE_BY_WIDTH + indexTileX; xT++){
+			TILE[this.tiles[xT][yT]].draw(ctx, xCanvas, yCanvas);
+			xCanvas += W_TILE;
+		}
+		yCanvas += H_TILE;
+		xCanvas = 0;
+	}
 }
 function cut(x){
 	if(x >= 0){

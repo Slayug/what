@@ -109,7 +109,6 @@ function draw(){
 	}else if(currentState == 1){
 		map.draw(ctx);
 		player.draw(ctx);
-		var rdm = Math.random()*10;
 
 	}
 	ctx.restore();
