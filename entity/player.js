@@ -31,9 +31,9 @@ var drawPlayer = function draw(ctx){
 var updatePlayer = function update(delta){
     if ( inputManager.up ) {
         this.y++ ;
-    } else if ( inputManger.down ) {
+    } else if ( inputManager.down ) {
         this.y-- ;
-    } else if ( inputManger.left ) {
+    } else if ( inputManager.left ) {
         this.x++ ;
     } else if ( inputManager.right ) {
         this.x-- ;
