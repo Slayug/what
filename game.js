@@ -13,6 +13,22 @@ function mouseMove(e){
 	var xR = (e.clientX);
 	var yR = (e.clientY);
 }
+
+/**
+ * Add an event
+ * @param elem the elem
+ * @param event the event. e.g : "click"
+ * @param funct the function to add
+ */
+function addEvent(elem, event, func) {
+	if (elem.addEventListener) {
+		element.addEventListener(event, func, false);
+	} else {
+		element.attachEvent('on' + event, func);
+	}
+}
+
+
 /**
 *	0: loading
 *	1: game
@@ -29,6 +45,7 @@ function load(){
 	if (!elem || !elem.getContext) {return;}
 	ctx = elem.getContext('2d');
 	if (!ctx) {return;}
+	addEvent(elem, "mousemove", function (e) { mouseMove(e);});
 	requestAnimationFrame(mainLoop);
 	player = new Player();
 	//loading image
