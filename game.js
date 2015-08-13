@@ -7,8 +7,10 @@ var framesThisSecond = 0;
 var lastFpsUpdate = 0;
 var ctx = null;
 var player;
-var WIDTH = 800;
-var HEIGHT = 600;
+var map;
+var WIDTH = 320;
+var HEIGHT = 240;
+var SCALE = 1;
 function mouseMove(e){
 	var xR = (e.clientX);
 	var yR = (e.clientY);
@@ -45,8 +47,18 @@ function load(){
 	if (!elem || !elem.getContext) {return;}
 	ctx = elem.getContext('2d');
 	if (!ctx) {return;}
-	addEvent(elem, "mousemove", function (e) { mouseMove(e);});
+
+	var w = window,
+    e = document.documentElement,
+    g = document.getElementsByTagName('body')[0],
+    heightW = w.innerHeight|| e.clientHeight|| g.clientHeight;
+	heightW = parseInt(heightW/100)*100;
+	var widthW = parseInt(heightW * (320/240));
+	ctx.canvas.width = widthW;
+	ctx.canvas.height = heightW;
+	SCALE = widthW/320;
 	requestAnimationFrame(mainLoop);
+	//map = new Map();
 	player = new Player();
 	//loading image
 	// every image is loaded in images
@@ -61,6 +73,7 @@ function load(){
 			images[img.name] = img;
 		}
 	}
+	addEvent(elem, "mousemove", function (e) { mouseMove(e);});
 	currentState++;
 }
 var keyReleased = function keyReleased(e){
@@ -93,6 +106,7 @@ function update(delta) {
 }
 function draw(){
 	ctx.save();
+	ctx.scale(SCALE, SCALE);
 	ctx.fillStyle = "#FFFFFF";
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
 	if(currentState == 0){
@@ -105,11 +119,9 @@ function draw(){
 		ctx.fillStyle = '#232323';
 		ctx.fillText(text, WIDTH/2 - 77, HEIGHT/2 - 10);
 	}else if(currentState == 1){
+		//map.draw(ctx);
 		player.draw(ctx);
 		var rdm = Math.random()*10;
-		ctx.drawImage(images['player'], rdm, rdm);
-
-		ctx.drawImage(images['monster'], rdm*-0.5 + 200, rdm*-1);
 
 	}
 
