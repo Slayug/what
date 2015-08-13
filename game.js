@@ -12,7 +12,6 @@ var HEIGHT = 600;
 function mouseMove(e){
 	var xR = (e.clientX);
 	var yR = (e.clientY);
-	//console.log(xR+' '+yR);
 }
 /**
 *	0: loading
@@ -30,7 +29,6 @@ function load(){
 	if (!elem || !elem.getContext) {return;}
 	ctx = elem.getContext('2d');
 	if (!ctx) {return;}
-
 	requestAnimationFrame(mainLoop);
 	player = new Player();
 	//loading image
