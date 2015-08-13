@@ -14,6 +14,12 @@ var Tile = function Tile(meta, substitute, functionDraw){
 	this.draw = functionDraw;
 }
 var a = function(ctx, x, y){
+	ctx.fillStyle = 'black';
+	ctx.fillRect(x, y, W_TILE, H_TILE);
+}
+var b = function(ctx, x, y){
+	ctx.fillStyle = 'white';
 	ctx.fillRect(x, y, W_TILE, H_TILE);
 }
 TILE[idTile] = new Tile(1, 0, a);
+TILE[idTile] = new Tile(0, 0, b);

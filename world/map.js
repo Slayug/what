@@ -19,7 +19,14 @@ function loadMap(){
 	//genere chunks de test
 	for(var x = 256; x > 256-32; x--){
 		for(var y = 0; y < TILE_BY_HEIGHT; y++){
-			
+			var t = 0;
+			if(y == 2){
+				t = 1;
+			}
+			if(tiles[x] == undefined){
+				tiles[x] = [];
+			}
+			tiles[x][y] = t;
 		}
 	}
 	return tiles;
@@ -31,6 +38,7 @@ var updateMap = function(delta){
 **/
 var drawMap = function(ctx){
 	ctx.fillStyle='black';
+	
 }
 /**
 *	Represents 16 width of tile
