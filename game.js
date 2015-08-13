@@ -14,25 +14,39 @@ function mouseMove(e){
 	var yR = (e.clientY);
 	//console.log(xR+' '+yR);
 }
+/**
+*	0: loading
+*	1: game
+**/
+var currentState = 0;
+/**
+*	Image should be loaded
+**/
+var images = [
+	'player.png',
+	'monster.png'];
 function load(){
 	var elem = document.getElementById('c');
 	if (!elem || !elem.getContext) {return;}
 	ctx = elem.getContext('2d');
 	if (!ctx) {return;}
 
-	var w = window,
-    e = document.documentElement,
-    g = document.getElementsByTagName('body')[0],
-    heightW = w.innerHeight|| e.clientHeight|| g.clientHeight;
-
-	heightW = parseInt(heightW/100)*100;
-	var widthW = parseInt(heightW * (800/600));
-	HEIGHT = heightW;
-	WIDTH = widthW;
-	ctx.canvas.width = WIDTH;
-	ctx.canvas.height = HEIGHT;
-	player = new Player();
 	requestAnimationFrame(mainLoop);
+	player = new Player();
+	//loading image
+	// every image is loaded in images
+	// like image['player'] equal the image player.png
+	// every image should be save in folder image/
+	for(var i = 0; i < images.length; i++){
+		var img = new Image();
+		img.src = 'image/'+images[i];
+		img.name = images[i].substr(0, images[i].indexOf('.'));
+		images[img.name] = img;
+		images[img.name].onload = function(){
+			images[img.name] = img;
+		}
+	}
+	currentState++;
 }
 var keyReleased = function keyReleased(e){
 	var key = e.keyCode? e.keyCode : e.charCode;
@@ -66,7 +80,24 @@ function draw(){
 	ctx.save();
 	ctx.fillStyle = "#FFFFFF";
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
-	player.draw(ctx);
+	if(currentState == 0){
+		var rdm = (Math.random()*3) + 1;
+		var text = 'LOADING';
+		for(var p = 0; p < rdm; p++){
+			text += '.';
+		}
+		ctx.font = '40px serif';
+		ctx.fillStyle = '#232323';
+		ctx.fillText(text, WIDTH/2 - 77, HEIGHT/2 - 10);
+	}else if(currentState == 1){
+		player.draw(ctx);
+		var rdm = Math.random()*10;
+		ctx.drawImage(images['player'], rdm, rdm);
+
+		ctx.drawImage(images['monster'], rdm*-0.5 + 200, rdm*-1);
+
+	}
+
 	ctx.restore();
 }
 function panic() {
