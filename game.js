@@ -89,30 +89,6 @@ function load(){
 	//start game
 	currentState++;
 }
-var keyReleased = function keyReleased(e){
-	var key = e.keyCode? e.keyCode : e.charCode;
-	if(key == 90){ //z
-	}
-	if(key == 83){ //s
-	}
-	if(key == 81){//q
-	}
-	if(key == 68){//d
-	}
-}
-
-var keyPressed = function keyPress(e){
-	var key = e.keyCode? e.keyCode : e.charCode;
-	var key = e.keyCode? e.keyCode : e.charCode;
-	if(key == 90){ //z
-	}
-	if(key == 83){ //s
-	}
-	if(key == 81){//q
-	}
-	if(key == 68){//d
-	}
-}
 function update(delta) {
 	player.update(delta);
 	//map.update(delta);
@@ -137,7 +113,6 @@ function draw(){
 		var rdm = Math.random()*10;
 
 	}
-
 	ctx.restore();
 }
 function panic() {

@@ -19,7 +19,6 @@ function loadMap(){
 	//genere chunks de test
 	for(var x = 256; x > 256-32; x--){
 		for(var y = 0; y < TILE_BY_HEIGHT; y++){
-			
 		}
 	}
 	return tiles;
