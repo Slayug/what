@@ -1,12 +1,12 @@
 var Player = function Player(){
   this.pseudo= 'player';
-  this.x;
-  this.y;
+  this.x = 240;
+  this.y = 5;
   this.id;
   this.width = 10;
   this.height = 10;
   this.color = 'black';
-  this.speed = 0.06;
+  this.speed = 0.04;
   this.scale = 1;
   this.alpha = 0;
   /*------Methods-----*/
@@ -21,7 +21,7 @@ var Player = function Player(){
  */
 var drawPlayer = function draw(ctx){
     ctx.fillStyle = "red";
-    ctx.fillRect(WIDTH/2 - 5, HEIGHT/2 - 5, 10, 10);
+    ctx.fillRect(WIDTH - POS_TO_LEFT, 50, 10, 10);
 }
 
 /**
@@ -34,9 +34,9 @@ var updatePlayer = function update(delta){
     } else if ( inputManager.down ) {
         this.y-- ;
     } else if ( inputManager.left ) {
-        this.x++ ;
+        this.x += player.speed * delta;
     } else if ( inputManager.right ) {
-        this.x-- ;
+        this.x -= player.speed * delta;
     }
 }
 
