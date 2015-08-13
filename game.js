@@ -22,9 +22,9 @@ function mouseMove(e){
  */
 function addEvent(elem, event, func) {
 	if (elem.addEventListener) {
-		element.addEventListener(event, func, false);
+		elem.addEventListener(event, func, false);
 	} else {
-		element.attachEvent('on' + event, func);
+		elem.attachEvent('on' + event, func);
 	}
 }
 
