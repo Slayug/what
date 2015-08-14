@@ -1,11 +1,12 @@
 var Player = function Player(){
   this.pseudo= 'player';
   this.x = 240;
-  this.vx = 0;
-  this.vxmax = 10;
+  this.vX = 0;
+  this.vXMax = 10;
   this.y = 5;
-  this.vy = 0;
-  this.vymax = 5;
+  this.vY = 0;
+  this.vYMax = 5;
+  this.speed = 0.04;
   this.id;
   this.width = 10;
   this.height = 10;
@@ -41,12 +42,12 @@ var updatePlayer = function update( ){
  */
 var movePlayer = function( ) {
     if ( inputManager.up ) {
-        this.vy += 1 ;
+        this.vY += 2 ;
     } else if ( inputManager.down ) {
-        this.vy -= 1 ;
+        this.vY -= 2 ;
     } else if ( inputManager.left ) {
-        this.vx += 1 ;
+        this.vX += 2 ;
     } else if ( inputManager.right ) {
-        this.vx -= 1 ;
+        this.vX -= 2 ;
     }
 }
