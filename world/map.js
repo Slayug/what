@@ -55,7 +55,6 @@ var drawMap = function(ctx){
 	}
 	var xCanvas = startX;
 	var yCanvas = 0;
-	console.log(indexTileX);
 	for(var yT = 0; yT < TILE_BY_HEIGHT; yT++){
 		for(var xT = indexTileX; xT < TILE_BY_WIDTH + indexTileX + (startX/startX); xT++){
 			TILE[this.tiles[xT][yT]].draw(ctx, xCanvas, yCanvas);

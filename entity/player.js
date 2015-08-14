@@ -1,7 +1,7 @@
 var Player = function Player(){
   this.pseudo= 'player';
   this.x = 50;
-  this.y = 5;
+  this.y = 48;
   this.vX = 0;
   this.vXMax = 10;
   this.vY = 0;
@@ -26,7 +26,7 @@ var Player = function Player(){
  */
 var drawPlayer = function draw(ctx){
     ctx.fillStyle = "red";
-    ctx.fillRect(WIDTH - POS_TO_LEFT, 50, 10, 10);
+    ctx.fillRect(WIDTH - POS_TO_LEFT, this.y, 10, 10);
 }
 
 /**
