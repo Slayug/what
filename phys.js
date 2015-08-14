@@ -56,12 +56,12 @@ var colisionPlayerMap = function() {
 		    //Down
 		    case 1 : 
 			player.vY *= -1;
-		        player.y = map.tiles[x][y] + TILE_BY_HEIGHT;
+		        player.y = map.tiles[x][y] + H_TILE;
 		    break;
 		    //Left
 		    case 2 :
 		        player.vX *= -1;
-		        player.x = map.tiles[x][y] + TILE_BY_WIDTH;
+		        player.x = map.tiles[x][y] + W_TILE;
 		    break;
 		    //Right
 		    case 3 : 
@@ -79,7 +79,7 @@ var colisionPlayerMap = function() {
 compared to the player position*/
 var positionCollision = function( x , y ){
     //If it's down
-    if( y + TILE_BY_HEIGHT < player.y ){
+    if( y + H_TILE < player.y ){
         return 1;
     }
     //If it's up
@@ -87,7 +87,7 @@ var positionCollision = function( x , y ){
         return 0;
     }
     //If it's left
-    if( x + TILE_BY_WIDTH >= player.x ){
+    if( x + W_TILE >= player.x ){
         return 2;
     }
     //If it's right
@@ -98,7 +98,7 @@ var positionCollision = function( x , y ){
 
 var collided = function( x , y ){
     return x <= player.x + player.width && 
-           x + TILE_BY_WIDTH >= player.x &&
+           x + W_TILE >= player.x &&
 	   y <= player.y + player.height &&
-	   y + TILE_BY_HEIGHT >= player.y;
+	   y + H_TILE >= player.y;
 }
