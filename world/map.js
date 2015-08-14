@@ -47,16 +47,22 @@ var drawMap = function(ctx){
 	ctx.fillStyle='black';
 	var startX = 0;
 	var startY = 0;
-	var indexTileX = parseInt(cut((player.x - (WIDTH-POS_TO_LEFT)/W_TILE)));
-	var xCanvas = 0;
+	// left-top point of canvas in landmark game
+	var aX = player.x + (WIDTH-POS_TO_LEFT);
+	var indexTileX = cut(aX/W_TILE);
+	if(aX % (W_TILE) != 0){
+		startX = -(aX - (indexTileX*W_TILE));
+	}
+	console.log(player.x+' '+aX+' '+indexTileX+' '+startX);
+	var xCanvas = startX;
 	var yCanvas = 0;
 	for(var yT = 0; yT < TILE_BY_HEIGHT; yT++){
-		for(var xT = indexTileX; xT < TILE_BY_WIDTH + indexTileX; xT++){
+		for(var xT = indexTileX; xT < TILE_BY_WIDTH + indexTileX + (startX/startX); xT++){
 			TILE[this.tiles[xT][yT]].draw(ctx, xCanvas, yCanvas);
 			xCanvas += W_TILE;
 		}
 		yCanvas += H_TILE;
-		xCanvas = 0;
+		xCanvas = startX;
 	}
 }
 function cut(x){

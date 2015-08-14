@@ -1,9 +1,9 @@
 var Player = function Player(){
   this.pseudo= 'player';
-  this.x = 240;
+  this.x = 50;
+  this.y = 5;
   this.vX = 0;
   this.vXMax = 10;
-  this.y = 5;
   this.vY = 0;
   this.vYMax = 5;
   this.speed = 0.04;
@@ -42,12 +42,12 @@ var updatePlayer = function update( ){
  */
 var movePlayer = function( ) {
     if ( inputManager.up ) {
-        this.vY += 2 ;
+        this.vY += 0.5;
     } else if ( inputManager.down ) {
         this.vY -= 2 ;
     } else if ( inputManager.left ) {
-        this.vX += 2 ;
+        this.vX += 2;
     } else if ( inputManager.right ) {
-        this.vX -= 2 ;
+        this.vX -= 2;
     }
 }
