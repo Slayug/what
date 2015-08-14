@@ -20,7 +20,7 @@ function Map(name){
 function loadMap(){
 	var tiles = [];
 	//genere chunks de test
-	for(var x = 512; x > 0; x--){
+	for(var x = -256; x < 100; x++){
 		for(var y = 0; y < TILE_BY_HEIGHT; y++){
 			var t = 0;
 			if(y == 2){
@@ -44,7 +44,6 @@ var updateMap = function(delta){
 *	draw the map with the current position of player
 **/
 var drawMap = function(ctx){
-	ctx.fillStyle='black';
 	var startX = 0;
 	var startY = 0;
 	// left-top point of canvas in landmark game
@@ -63,6 +62,7 @@ var drawMap = function(ctx){
 		yCanvas += H_TILE;
 		xCanvas = startX;
 	}
+	console.log('startX '+startX+' indexTileX '+indexTileX+' aX '+aX);
 }
 function cut(x){
 	if(x >= 0){

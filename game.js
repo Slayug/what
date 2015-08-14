@@ -66,8 +66,13 @@ function load(){
 	ctx.canvas.width = widthW;
 	ctx.canvas.height = heightW;
 	SCALE = widthW/320;
-	requestAnimationFrame(mainLoop);
+	if(SCALE % 0.5 != 0){
+		SCALE = Math.round(widthW/320);
+		ctx.canvas.width = 320*SCALE;
+		ctx.canvas.height = 240*SCALE;
+	}
 	map = new Map();
+	requestAnimationFrame(mainLoop);
 	player = new Player();
 	//loading image
 	// every image is loaded in images
@@ -98,8 +103,8 @@ function update(delta) {
 }
 function draw(){
 	ctx.save();
-	ctx.scale(SCALE, SCALE);
 	ctx.fillStyle = "#FFFFFF";
+	ctx.scale(SCALE, SCALE);
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
 	if(currentState == 0){
 		var rdm = (Math.random()*3) + 1;
