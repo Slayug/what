@@ -12,7 +12,7 @@ var updatePhys = function( delta ) {
 var playerPhys = function( delta  ){
 
     //Move the player in x
-    player.x += player.vX * delta * player.speed ; 
+    player.x += player.vX * delta * player.speed ;
     //If the player go to the left
     if( player.vX < 0 ){
         player.vX++ ;
@@ -29,7 +29,7 @@ var playerPhys = function( delta  ){
     }
 
     //Move the player in y
-    player.y += player.vY * delta * player.speed; 
+    player.y += player.vY * delta * player.speed;
     //If the player fall
     if( player.vY < 0 ){
         player.vY++ ;
@@ -45,4 +45,3 @@ var playerPhys = function( delta  ){
 	    player.vX = player.vXMax;
     }
 }
-

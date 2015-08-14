@@ -20,7 +20,7 @@ function Map(name){
 function loadMap(){
 	var tiles = [];
 	//genere chunks de test
-	for(var x = 256; x > 0; x--){
+	for(var x = 512; x > 0; x--){
 		for(var y = 0; y < TILE_BY_HEIGHT; y++){
 			var t = 0;
 			if(y == 2){
@@ -53,9 +53,9 @@ var drawMap = function(ctx){
 	if(aX % (W_TILE) != 0){
 		startX = -(aX - (indexTileX*W_TILE));
 	}
-	console.log(player.x+' '+aX+' '+indexTileX+' '+startX);
 	var xCanvas = startX;
 	var yCanvas = 0;
+	console.log(indexTileX);
 	for(var yT = 0; yT < TILE_BY_HEIGHT; yT++){
 		for(var xT = indexTileX; xT < TILE_BY_WIDTH + indexTileX + (startX/startX); xT++){
 			TILE[this.tiles[xT][yT]].draw(ctx, xCanvas, yCanvas);

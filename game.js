@@ -1,7 +1,7 @@
 var lastFrameTimeMs = 0;
 var maxFPS = 120;
 var delta = 0;
-var timestep = 1000 / 60;
+var timestep = 1000 / 120;
 var fps = 120;
 var framesThisSecond = 0;
 var lastFpsUpdate = 0;
