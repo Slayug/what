@@ -62,7 +62,6 @@ var drawMap = function(ctx){
 		yCanvas += H_TILE;
 		xCanvas = startX;
 	}
-	console.log('startX '+startX+' indexTileX '+indexTileX+' aX '+aX);
 }
 function cut(x){
 	if(x >= 0){
