@@ -23,7 +23,7 @@ var b = function(ctx, x, y){
 	ctx.fillRect(x, y, W_TILE, H_TILE);
 }
 var c = function(ctx, x, y){
-	ctx.fillStyle = 'green';
+	ctx.fillStyle = 'purple';
 	ctx.fillRect(x, y, W_TILE, H_TILE);
 }
 new Tile(1, 0, a);

@@ -47,20 +47,21 @@ var drawMap = function(ctx){
 	var startX = 0;
 	var startY = 0;
 	// left-top point of canvas in landmark game
-	var aX = player.x + (WIDTH-POS_TO_LEFT);
-	var indexTileX = cut(aX/W_TILE);
-	if(aX % (W_TILE) != 0){
-		startX = -(aX - (indexTileX*W_TILE));
+	var aX = player.x - (WIDTH-POS_TO_LEFT);
+	var indexTileX = cut(aX / W_TILE);
+	if(aX % W_TILE != 0){
+		startX = parseInt(-(aX - indexTileX*W_TILE));
 	}
-	var xCanvas = startX;
-	var yCanvas = 0;
-	for(var yT = 0; yT < TILE_BY_HEIGHT; yT++){
-		for(var xT = indexTileX; xT < TILE_BY_WIDTH + indexTileX + (startX/startX); xT++){
-			TILE[this.tiles[xT][yT]].draw(ctx, xCanvas, yCanvas);
-			xCanvas += W_TILE;
+	var tileX = indexTileX;
+	var tileY = 0;
+	var pos = [];
+	for(var xCanvas = startX; xCanvas < WIDTH - startX; xCanvas += W_TILE){
+		for(var yCanvas = startY; yCanvas < HEIGHT - startY; yCanvas += H_TILE){
+			TILE[this.tiles[tileX][tileY]].draw(ctx, xCanvas, yCanvas);
+			tileY++;
 		}
-		yCanvas += H_TILE;
-		xCanvas = startX;
+		tileX++;
+		tileY = 0;
 	}
 }
 function cut(x){

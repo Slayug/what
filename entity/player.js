@@ -10,7 +10,7 @@ var Player = function Player(){
   this.id;
   this.width = 10;
   this.height = 10;
-  this.color = 'black';
+  this.color = 'red';
   this.speed = 0.04;
   this.scale = 1;
   this.alpha = 0;
@@ -25,7 +25,7 @@ var Player = function Player(){
  * @param ctx the canvas's context
  */
 var drawPlayer = function draw(ctx){
-    ctx.fillStyle = "red";
+    ctx.fillStyle = this.color;
     ctx.fillRect(WIDTH - POS_TO_LEFT, this.y, 10, 10);
 }
 
