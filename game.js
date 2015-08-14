@@ -9,6 +9,7 @@ var ctx = null;
 var player;
 var map;
 var inputManager;
+var physHandler;
 /**
 *	Constants
 **/
@@ -85,11 +86,14 @@ function load(){
 	addEvent(elem, "mousemove", function (e) { mouseMove(e);});
 	//load keys events
 	inputManager = new Input();
+	//load physique engine
+	physHandler = new Phys();
 	//start game
 	currentState++;
 }
 function update(delta) {
-	player.update(delta);
+	player.update();
+	physHandler.update( delta );
 	//map.update(delta);
 }
 function draw(){

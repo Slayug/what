@@ -1,7 +1,11 @@
 var Player = function Player(){
   this.pseudo= 'player';
   this.x = 240;
+  this.vx = 0;
+  this.vxmax = 10;
   this.y = 5;
+  this.vy = 0;
+  this.vymax = 5;
   this.id;
   this.width = 10;
   this.height = 10;
@@ -28,22 +32,21 @@ var drawPlayer = function draw(ctx){
  * Update the player
  * @param float delta the PC's speed
  */
-var updatePlayer = function update(delta){
-    if ( inputManager.up ) {
-        this.y++ ;
-    } else if ( inputManager.down ) {
-        this.y-- ;
-    } else if ( inputManager.left ) {
-        this.x += player.speed * delta;
-    } else if ( inputManager.right ) {
-        this.x -= player.speed * delta;
-    }
+var updatePlayer = function update( ){
+    this.move()
 }
 
 /**
  * Move a player
- * @param context the canvas's context
- * @param integer pressedKey the pressed key
  */
-var movePlayer = function (context, pressedKey, canvasHeight) {
+var movePlayer = function( ) {
+    if ( inputManager.up ) {
+        this.vy += 1 ;
+    } else if ( inputManager.down ) {
+        this.vy -= 1 ;
+    } else if ( inputManager.left ) {
+        this.vx += 1 ;
+    } else if ( inputManager.right ) {
+        this.vx -= 1 ;
+    }
 }
