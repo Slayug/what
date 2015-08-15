@@ -42,7 +42,7 @@ var updatePlayer = function update( ){
  */
 var movePlayer = function( ) {
     if ( inputManager.up ) {
-        this.vY += 0.5;
+        this.vY += 2
     } else if ( inputManager.down ) {
         this.vY -= 2 ;
     } else if ( inputManager.left ) {
