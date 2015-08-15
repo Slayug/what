@@ -32,6 +32,7 @@ var playerPhys = function playerPhys( delta  ){
     }
     //If the player go to the bottom
     if( player.vY < 0 ){
+        player.vY++;
         if( player.vY < -player.vYMax )
             player.vY = -player.vYMax;
     }
@@ -83,14 +84,13 @@ var colisionPlayerMap = function() {
                     case 2 :
                         player.vX = 0;
                         player.x = x * W_TILE + W_TILE;
-                        console.log( "Collided Left" );
                     break;
                     //Right
                     case 3 :
                         player.vX = 0;
                         player.x = x * W_TILE - player.width;
-                        console.log( "Collided Right" );
                     break;
+                    default : break;
                 }
             }
         }
@@ -102,18 +102,26 @@ Determine the relative position of the hited tile
 compared to the player position
 */
 var positionCollision = function( x , y ){
-    //If it's down
-    if( y + H_TILE > player.y && 
-        player.y + player.height > y &&
-        ( player.x > x + W_TILE || player.x + player.width < x ) )
-        return 1;
-    //If it's up
-    if( y < player.y + player.height )
-        return 0;
-    //If it's left
-    if( x + W_TILE > player.x )
-        return 2;
-    //If it's right
-    if( x < player.x + player.width )
-        return 3;
+    //If lateral colision
+    if( player.x + W_TILE > x &&
+        player.x < x + W_TILE ){
+        //If it's Right
+        if( player.vX > 0 ){
+            return 3;
+        }
+        //If it's Left
+        else if( player.vX < 0 ){
+            return 2;
+        }
+    }
+    else{
+        //If it's down
+        if( player.vY > 0 ){
+            return 1;
+        }
+        //If it's up
+        else if( player.vY < 0 ){
+            return 0;
+        }
+    }
 }
