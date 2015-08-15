@@ -15,14 +15,14 @@ var playerPhys = function playerPhys( delta  ){
     //If the player go to the left
     if( player.vX < 0 ){
         player.vX++ ;
-	if( player.vX < -player.vXMax )
-	    player.vX = -player.vXMax;
+        if( player.vX < -player.vXMax )
+            player.vX = -player.vXMax;
     }
     //If the player go to the right
     if( player.vX > 0 ){
         player.vX--;
-	if( player.vX > player.vXMax )
-	    player.vX = player.vXMax;
+        if( player.vX > player.vXMax )
+            player.vX = player.vXMax;
     }
     //If the player go to the top
     if( player.vY > 0 ){
@@ -62,30 +62,34 @@ var colisionPlayerMap = function() {
 
             //If the tile can be hit by the player
             if( map.tiles[x][y] !== 0 ){
-            /*
-            Determine the type of collision 
-            according to the movement of the player
-            */
+                /*
+                Determine the type of collision 
+                according to the movement of the player
+                */
                 switch( positionCollision( x * W_TILE , y * H_TILE ) ){
                     //Up
                     case 0 : 
                         player.vY *= -1;
                         player.y = y * H_TILE + H_TILE;
+                        console.log( "Collided Up" );
                     break;
                     //Down
                     case 1 :
                         player.vY = 0;
                         player.y = y * H_TILE - player.height;
+                        console.log( "Collided Down" );
                     break;
                     //Left
                     case 2 :
                         player.vX = 0;
                         player.x = x * W_TILE + W_TILE;
+                        console.log( "Collided Left" );
                     break;
                     //Right
                     case 3 :
                         player.vX = 0;
                         player.x = x * W_TILE - player.width;
+                        console.log( "Collided Right" );
                     break;
                 }
             }
@@ -94,12 +98,14 @@ var colisionPlayerMap = function() {
 }
 
 /*
-Determine the relative position of the tile 
+Determine the relative position of the hited tile 
 compared to the player position
 */
 var positionCollision = function( x , y ){
     //If it's down
-    if( y + H_TILE > player.y )
+    if( y + H_TILE > player.y && 
+        player.y + player.height > y &&
+        ( player.x > x + W_TILE || player.x + player.width < x ) )
         return 1;
     //If it's up
     if( y < player.y + player.height )
