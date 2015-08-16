@@ -98,7 +98,7 @@ function load(){
 }
 function update(delta) {
 	player.update();
-	physHandler.update( delta );
+	physHandler.update( );
 	//map.update(delta);
 }
 function draw(){
