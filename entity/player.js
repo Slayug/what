@@ -1,8 +1,8 @@
 var Player = function Player(){
   this.pseudo= 'player';
-  this.x = 50;
+  this.x = POS_TO_LEFT;
   this.y = 48;
-  this.vX = 0.04;
+  this.vX = -0.04;
   this.vXMax = 10;
   this.vY = 0.04;
   this.vYMax = 5;

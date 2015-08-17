@@ -72,8 +72,8 @@ function load(){
 		ctx.canvas.height = 240*SCALE;
 	}
 	map = new Map();
-	requestAnimationFrame(mainLoop);
 	player = new Player();
+	requestAnimationFrame(mainLoop);
 	//loading image
 	// every image is loaded in images
 	// like image['player'] equal the image player.png
@@ -97,9 +97,9 @@ function load(){
 	currentState++;
 }
 function update(delta) {
+	map.update(delta);
 	player.update();
 	physHandler.update( );
-	//map.update(delta);
 }
 function draw(){
 	ctx.save();
