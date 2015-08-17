@@ -20,7 +20,7 @@ function Map(name){
 function loadMap(){
 	var tiles = [];
 	//genere chunks de test
-	for(var x = -256; x < 100; x++){
+	for(var x = -50; x < 256; x++){
 		for(var y = 0; y < TILE_BY_HEIGHT; y++){
 			var t = 0;
 			if(y == 2){

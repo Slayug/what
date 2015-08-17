@@ -2,9 +2,9 @@ var Player = function Player(){
   this.pseudo= 'player';
   this.x = 50;
   this.y = 48;
-  this.vX = 0;
+  this.vX = 0.04;
   this.vXMax = 10;
-  this.vY = 0;
+  this.vY = 0.04;
   this.vYMax = 5;
   this.speed = 0.04;
   this.id;
@@ -25,7 +25,7 @@ var Player = function Player(){
  * @param ctx the canvas's context
  */
 var drawPlayer = function draw(ctx){
-    ctx.fillStyle = this.color;
+    ctx.fillStyle = randomColor();
     ctx.fillRect(WIDTH - POS_TO_LEFT, this.y, 10, 10);
 }
 
@@ -42,12 +42,12 @@ var updatePlayer = function update( ){
  */
 var movePlayer = function( ) {
     if ( inputManager.up ) {
-        this.vY += 2
-    } else if ( inputManager.down ) {
-        this.vY -= 2 ;
-    } else if ( inputManager.left ) {
-        this.vX += 2;
-    } else if ( inputManager.right ) {
-        this.vX -= 2;
+        this.vY = 0.04;
+    } if ( inputManager.down ) {
+        this.vY = -0.04;
+    } if ( inputManager.left ) {
+        this.vX = -0.04;
+    } if ( inputManager.right ) {
+        this.vX = 0.04;
     }
 }

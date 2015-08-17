@@ -152,4 +152,42 @@ function mainLoop(timestamp) {
     draw();
     requestAnimationFrame(mainLoop);
 }
+function randomColor(){
+    var rdm = Math.round(Math.random()*10);
+    switch (rdm) {
+        case 0:
+            return 'red';
+            break;
+        case 1:
+            return 'green';
+            break;
+        case 2:
+            return 'yellow';
+            break;
+        case 3:
+            return 'rgb(203, 84, 202)';
+            break;
+        case 4:
+            return 'purple';
+            break;
+        case 5:
+            return '#222222';
+            break;
+        case 6:
+            return 'rgb(186, 10, 184)';
+            break;
+        case 7:
+            return 'rgb(131, 230, 111)';
+            break;
+        case 8:
+            return 'rgb(235, 177, 29)';
+            break;
+        case 9:
+            return 'rgb(74, 65, 62)';
+            break;
+        default:
+            return '#232323';
+
+    }
+}
 load();

@@ -10,39 +10,18 @@ var updatePhys = function( ){
 }
 
 //Handle the movement , the gravity and the colision of the player
-var playerPhys = function playerPhys( ){
+var playerPhys = function playerPhys(){
 
-    //If the player go to the left
-    if( player.vX < 0 ){
-        player.vX++ ;
-        if( player.vX < -player.vXMax )
-            player.vX = -player.vXMax;
-    }
-    //If the player go to the right
-    if( player.vX > 0 ){
-        player.vX--;
-        if( player.vX > player.vXMax )
-            player.vX = player.vXMax;
-    }
-    //If the player go to the top
-    if( player.vY > 0 ){
-        player.vY--; 
-        if( player.vY > player.vYMax )
-            player.vY = player.vYMax;
-    }
-    //If the player go to the bottom
-    if( player.vY < 0 ){
-        player.vY++;
-        if( player.vY < -player.vYMax )
-            player.vY = -player.vYMax;
-    }
+    player.x += player.vX * delta;
+    player.y += player.vY * delta;
 
-    //Move the player in x
-    player.x += player.vX * delta * player.speed ;
-    //Move the player in y
-    player.y += player.vY * delta * player.speed;
-
-    this.colision();
+    var xT = parseInt(player.x/16);
+    var yT = parseInt(player.y/16);
+    //if(map.tiles[xT][yT] == 1){
+        player.speed = 0;
+        player.vY = 0;
+        map.tiles[xT][yT] = 3;
+    //}
 }
 
 //Reposition the player if he collided with a tile
@@ -54,22 +33,22 @@ var colisionPlayerMap = function() {
     var borneY = parseInt( ( player.y + player.height )/H_TILE);
 
     //Broswe the tile around the player
-    for( var x = pX; 
-         x <= borneX; 
+    for( var x = pX;
+         x <= borneX;
          x++ ){
-        for( var y = pY; 
-             y <= borneY; 
+        for( var y = pY;
+             y <= borneY;
              y++ ){
 
             //If the tile can be hit by the player
             if( map.tiles[x][y] !== 1 ){
                 /*
-                Determine the type of collision 
+                Determine the type of collision
                 according to the movement of the player
                 */
                 switch( positionCollision( x , y ) ){
                     //Up
-                    case 0 : 
+                    case 0 :
                         player.vY *= -1;
                         player.y = y * H_TILE + H_TILE;
                     break;
@@ -96,7 +75,7 @@ var colisionPlayerMap = function() {
 }
 
 /*
-Determine the relative position of the hited tile 
+Determine the relative position of the hited tile
 compared to the player position
 */
 var positionCollision = function( x , y ){

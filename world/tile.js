@@ -26,6 +26,11 @@ var c = function(ctx, x, y){
 	ctx.fillStyle = 'purple';
 	ctx.fillRect(x, y, W_TILE, H_TILE);
 }
+var d = function(ctx, x, y){
+	ctx.fillStyle = randomColor();
+	ctx.fillRect(x, y, W_TILE, H_TILE);
+}
 new Tile(1, 0, a);
 new Tile(0, 0, b);
 new Tile(0, 0, c);
+new Tile(0, 0, d);
