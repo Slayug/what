@@ -1,32 +1,24 @@
-var Player = function Player(){
-  this.pseudo= 'player';
-  this.x = map.nbTilesByWidth * W_TILE - W_TILE*3;
-  this.y = 48;
-  this.vX = -0.04;
-  this.vXMax = 10;
-  this.vY = 0.04;
-  this.vYMax = 5;
-  this.speed = 0.04;
-  this.id;
-  this.width = 10;
-  this.height = 10;
-  this.color = 'red';
-  this.speed = 0.04;
-  this.scale = 1;
-  this.alpha = 0;
-  /*------Methods-----*/
-  this.draw = drawPlayer;
-  this.update = updatePlayer;
-  this.move = movePlayer;
+function Player(){
+    this.x = map.nbTilesByWidth * W_TILE - W_TILE*3; //spawn by default
+    this.draw = drawPlayer;
+    this.update = updatePlayer;
+    this.move = movePlayer;
+    this.vX = -0.04;
+    this.width = 16;
+    this.height = 16;
+    this.color = '#00F018';
 }
-
 /**
- * Draw the player
+ * Draw the player from the square center
  * @param ctx the canvas's context
  */
 var drawPlayer = function draw(ctx){
-    ctx.fillStyle = randomColor();
-    ctx.fillRect(WIDTH-POS_TO_LEFT, this.y, 10, 10);
+    ctx.save();
+        ctx.translate(WIDTH-POS_TO_LEFT + this.width/2, this.y + this.height/2);
+        ctx.rotate(this.alpha);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.width/2, -this.height/2, this.width, this.height);
+    ctx.restore();
 }
 
 /**
@@ -51,3 +43,4 @@ var movePlayer = function( ) {
         this.vX = 0.04;
     }
 }
+Player.prototype = new Entity;

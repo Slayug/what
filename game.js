@@ -7,6 +7,7 @@ var framesThisSecond = 0;
 var lastFpsUpdate = 0;
 var ctx = null;
 var player;
+var entities = [];
 var map;
 var inputManager;
 var physHandler;
@@ -87,6 +88,7 @@ function load(){
 			images[img.name] = img;
 		}
 	}
+	entities.push(new Enemy());
 	//load events
 	addEvent(elem, "mousemove", function (e) { mouseMove(e);});
 	//load keys events
@@ -103,8 +105,6 @@ function update(delta) {
 }
 function draw(){
 	ctx.save();
-
-
 	ctx.fillStyle = "#FFFFFF";
 	ctx.scale(SCALE, SCALE);
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
@@ -121,6 +121,11 @@ function draw(){
 		ctx.fillText(text, WIDTH/2 - 77, HEIGHT/2 - 10);
 	}else if(currentState == 1){
 		map.draw(ctx);
+
+		for(var e = 0; e < entities.length; e++){
+			entities[e].draw(ctx);
+		}
+
 		player.draw(ctx);
 	}
 	ctx.restore();
