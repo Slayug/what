@@ -103,9 +103,13 @@ function update(delta) {
 }
 function draw(){
 	ctx.save();
+
+
 	ctx.fillStyle = "#FFFFFF";
 	ctx.scale(SCALE, SCALE);
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+
 	if(currentState == 0){
 		var rdm = (Math.random()*3) + 1;
 		var text = 'LOADING';

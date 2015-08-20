@@ -1,6 +1,6 @@
 var Player = function Player(){
   this.pseudo= 'player';
-  this.x = POS_TO_LEFT;
+  this.x = map.nbTilesByWidth * W_TILE - W_TILE*3;
   this.y = 48;
   this.vX = -0.04;
   this.vXMax = 10;
@@ -26,7 +26,7 @@ var Player = function Player(){
  */
 var drawPlayer = function draw(ctx){
     ctx.fillStyle = randomColor();
-    ctx.fillRect(WIDTH - POS_TO_LEFT, this.y, 10, 10);
+    ctx.fillRect(WIDTH-POS_TO_LEFT, this.y, 10, 10);
 }
 
 /**

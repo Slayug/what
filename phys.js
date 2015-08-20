@@ -13,14 +13,11 @@ var updatePhys = function( ){
 var playerPhys = function playerPhys(){
 
     player.x += player.vX * delta;
-    player.y += player.vY * delta;
-
     var xT = parseInt(player.x/16);
     var yT = parseInt(player.y/16);
     //if(map.tiles[xT][yT] == 1){
-        player.speed = 0;
-        player.vY = 0;
-        map.tiles[xT][yT] = 3;
+    map.tiles[xT][yT] = 3;
+
     //}
 }
 
